@@ -1,0 +1,9 @@
+# accepts inputs U D L R
+
+# snake will be in a 10x10 area
+V screen 0 0 10 10
+V input 11 0 1 1
+
+# to save me some time, I can just set each cell values in the 10x10 area
+# to a value from 0-3 (0 being nothing, 1 being head, 2 being body and 3 being apple)
+# To differ 
