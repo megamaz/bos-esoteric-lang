@@ -31,8 +31,8 @@ Will display all the cells of a variable as ascii values, where each new row rep
 Usage: `R [variable name]`\
 Will accept any length of input and set all their ascii values to the cells. (if width overflow, then go to next row). If there are too many characters for the variable to handle, an error will arise.
 ## P
-Usage 1: `P [variable 1] [variable 2]`\
-... Copies variable content from variable 1 to variable 2.\
+Usage 1: `P [variable 1] [X] [Y]`\
+... Copies variable content from variable 1 to a new location.\
 Why did I use P for this? Because C for copy is already taken and D for duplicate is already taken.\
 What do P stand for? idfk
 # Constant Variables
