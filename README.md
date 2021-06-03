@@ -8,7 +8,7 @@ Comments are `#`
 # Commands
 ## M
 Usage: `M [new pointer X] [new pointer Y]`\
-Moves your pointer to a new cell. New position cannot be a variable!
+Moves your pointer to a new cell. New position cannot be a variable! The new X and new Y can be either `+` or `-` to move the pointer in the specified axis the amount of `+` / `-` count. (doing `M ++ --` will move to the right and up, since top left is 0 0)
 ## S
 Usage: `S [new value]`\
 Sets the current cell value. Must be 0-255.
