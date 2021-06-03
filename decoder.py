@@ -117,10 +117,12 @@ def Interpret(filePath, viewMemUtilization=False):
                     continue
 
                 if currentCommand == "S":
-                    if char in variables.keys():
-                        cells(X, Y, variables[char])
-                    elif char == "C":
+                    if char == "C":
                         cells(X, Y, cells(X, Y)) # why
+                    elif char == "X":
+                        cells(X, Y, X)
+                    elif char == "Y":
+                        cells(X, Y, Y)
                     else:
                         cells(X, Y, int(char))
                     currentCommand = None
@@ -165,11 +167,11 @@ def Interpret(filePath, viewMemUtilization=False):
                         valuesSet += 1
 
                     elif valuesSet == 1:
-                        variables[v0][0] = int(char.split("X")[0])
+                        variables[v0][0] = int(char)
                         valuesSet +=1
 
                     elif valuesSet == 2:
-                        variables[v0][1] = int(char.split("X")[1])
+                        variables[v0][1] = int(char)
                         valuesSet += 1 
 
                     elif valuesSet == 3:
@@ -241,5 +243,5 @@ def Interpret(filePath, viewMemUtilization=False):
 
 
 if __name__ == "__main__":
-    Interpret("./.bos")
+    Interpret("./snake.bos")
 
