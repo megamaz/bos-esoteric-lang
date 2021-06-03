@@ -67,6 +67,8 @@ def Interpret(filePath, viewMemUtilization=False):
                             X += len([x for x in char if x == "+"])
                         elif char.startswith("-"):
                             X -= len([x for x in char if x == "-"])
+                        elif char == "/":
+                            pass
                         else:
                             X = int(char)
                         valuesSet = 1
@@ -75,6 +77,8 @@ def Interpret(filePath, viewMemUtilization=False):
                             Y += len([x for x in char if x == "+"])
                         elif char.startswith("-"):
                             Y -= len([x for x in char if x == "-"])
+                        elif char == "/":
+                            pass
                         else:
                             Y = int(char)
 
