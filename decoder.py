@@ -43,17 +43,17 @@ def Interpret(filePath, viewMemUtilization=False):
                         else: 
                             ICount -= 1
                     continue
-
-                if char.startswith("+"):
-                    cells(X, Y, cells(X, Y)+len([x for x in char if x == "+"]))
-                    if cells(X, Y) == 256:
-                        cells(X, Y, 0)
-                    continue
-                if char.startswith("-"):
-                    cells(X, Y, cells(X, Y)-len([x for x in char if x == "-"]))
-                    if cells(X, Y) == -1:
-                        cells(X, Y, 255)
-                    continue
+                if not currentCommand:
+                    if char.startswith("+"):
+                        cells(X, Y, cells(X, Y)+len([x for x in char if x == "+"]))
+                        if cells(X, Y) == 256:
+                            cells(X, Y, 0)
+                        continue
+                    if char.startswith("-"):
+                        cells(X, Y, cells(X, Y)-len([x for x in char if x == "-"]))
+                        if cells(X, Y) == -1:
+                            cells(X, Y, 255)
+                        continue
                 
                 if not currentCommand and char != "E":
                     valuesSet = 0
@@ -63,10 +63,21 @@ def Interpret(filePath, viewMemUtilization=False):
 
                 if currentCommand == "M":
                     if valuesSet == 0:
-                        X = int(char)
+                        if char.startswith("+"):
+                            X += len([x for x in char if x == "+"])
+                        elif char.startswith("-"):
+                            X -= len([x for x in char if x == "-"])
+                        else:
+                            X = int(char)
                         valuesSet = 1
                     elif valuesSet == 1:
-                        Y = int(char)
+                        if char.startswith("+"):
+                            Y += len([x for x in char if x == "+"])
+                        elif char.startswith("-"):
+                            Y -= len([x for x in char if x == "-"])
+                        else:
+                            Y = int(char)
+
                         currentCommand = None
                         valuesSet = -1
                     continue
