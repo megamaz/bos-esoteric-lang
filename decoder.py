@@ -27,7 +27,7 @@ def Interpret(filePath, viewMemUtilization=False):
             valuesSet = -1
             currentCommand = None
             v0 = -1
-
+            v1 = -1
             for char in line.split():
 
                 if skippingLogic:
@@ -174,6 +174,24 @@ def Interpret(filePath, viewMemUtilization=False):
                         currentCommand = None
                         valuesSet = -1
                     continue
+
+                if currentCommand == "P":
+                    if valuesSet == 0:
+                        v0 = char
+                        valuesSet +=1
+
+                    elif valuesSet == 1:
+                        v1 = char
+                        valuesSet += 1
+                    else:
+                        for x in range(variables[v0][2]):
+                            for y in range(variables[v0][3]):
+                                cells(x+int(v1), y+int(char), cells(variables[v0][0]+x, variables[v0][1]+y))
+                        
+                        valuesSet = -1
+                        currentCommand = -1
+                    continue
+
 
                 
             if valuesSet >= 0 and currentCommand not in "D + -".split():
